@@ -60,7 +60,7 @@ int main()
         {"Alani Moran", 0}, {"Tate Douglas", 0}, {"Aniyah Johnston", 0}, {"Felix Wolf", 0}, {"Jolene Kirby", 0},
         {"Tony Boyle", 0}, {"Aliya McKay", 0}, {"Joey Sparks", 0}, {"Aisha Blair", 0}, {"Troy Nguyen", 0},
         {"Esperanza Booth", 0}, {"Chaim Medina", 0}, {"Elliana Fields", 0}, {"Clayton Ware", 0}, {"Eileen Stevens", 0},
-        {"Zachary Sims", 0}, {"Lena James", 0}, {"Jaxson Dougherty", 0}, {"Alisson Sharp", 0}, {"Michi Heike", 0}, {"Hadrian Lazic", 0}
+        {"Zachary Sims", 0}, {"Lena James", 0}, {"Jaxson Dougherty", 0}, {"Alisson Sharp", 0}, {"Shay Nicholas III Remington R5", 0}, {"Hadrian Lazic", 0}
     };
     
     //Initilize days
