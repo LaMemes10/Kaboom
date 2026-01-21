@@ -29,7 +29,7 @@ int randomNumberGenerate(){
 //Explosion check
 bool explode(int num){
     
-    if(num > 3){
+    if(num == 5){
         return true;
     }
     
