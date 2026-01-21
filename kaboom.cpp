@@ -1,10 +1,8 @@
 #include <iostream>
 #include <algorithm>
 #include <random>
-#include <limits>
 #include <vector>
-#include <array>
-#include <iterator>
+#include <string>
 
 //Refresh the screen
 void printRefresh(std::string clear) {
@@ -34,6 +32,30 @@ bool explode(int num){
 int main()
 {
     
+    //Names to pick
+    std::vector<std::string> names = {
+        "Thalia Henderson", "Beau Deleon", "Gabrielle Jenkins", "Declan Pham", "Raelyn Stafford",
+        "Alfredo Gillespie", "Alianna Wyatt", "Sam Banks", "Cali Reynolds", "Vincent Knapp",
+        "Linda Young", "Asher Bradford", "Rhea Zhang", "Isaias O’Connell", "Jillian Lucas",
+        "Chance Hart", "Gemma Clay", "Yosef Waters", "Bristol Perry", "Waylon Howe",
+        "Persephone Casey", "Armando Adkins", "Emelia McLean", "Zhouzen Li", "Violeta Spears",
+        "Ameer Whitehead", "Sylvie Butler", "Ryder Pace", "Giana Baldwin", "Jaiden Macias",
+        "Adley Golden", "Patrick Floirendo", "Penny Rollins", "Wes Price", "Piper Reed",
+        "Easton Acevedo", "Ashlynn Wiley", "Mathew Zimmerman", "Ariyah Andrade", "Abdiel Frederick",
+        "Sariyah Allen", "Carter Strickland", "Nia Evans", "Elias Stout", "Chana Boyer",
+        "Zeke Copeland", "Dayana Pittman", "Valentino Lloyd", "Emely Ortega", "Kobe Clarke",
+        "Kaitlyn Enriquez", "Elisha Johns", "Giovanna Shepard", "Damari Atkins", "Mina Wang",
+        "Adrian FernandezLopez", "Leona Hunter", "Archer Hester", "Zendaya Hull", "Salem Roberson",
+        "Sasha Kim", "Roman Newman", "Oaklynn Phelps", "Hamza Ruiz", "Emery Miranda",
+        "Rory Lester", "Averi Sheppard", "Trent Grimes", "Braelyn Garrison", "Noe Wall",
+        "Jayda Boyer", "Zeke Donovan", "Azariah Price", "Brooks Pham", "Raelyn Lee",
+        "Jack Walsh", "Leia Rogers", "Colton Klein", "Elianna Garza", "Judah Delgado",
+        "Alani Moran", "Tate Douglas", "Aniyah Johnston", "Felix Wolf", "Jolene Kirby",
+        "Tony Boyle", "Aliya McKay", "Joey Sparks", "Aisha Blair", "Troy Nguyen",
+        "Esperanza Booth", "Chaim Medina", "Elliana Fields", "Clayton Ware", "Eileen Stevens",
+        "Zachary Sims", "Lena James", "Jaxson Dougherty", "Alisson Sharp", "Michi Heike", "Hadrian Lazic"
+    };
+    
     //Initilize days
     std::vector<std::string> days {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     int dayIndex {6};
@@ -41,7 +63,7 @@ int main()
     std::cout << "Today is Sunday\n\n";
 
     //Menu
-    while(true){
+    while(!names.empty()){
         
         std::cout << "Advance day(y/n)?\n";
         char option {};
@@ -58,56 +80,45 @@ int main()
             
             //Check if explode is equal to random number
             if(explode(randomNumber)){
+                
                 printRefresh({});
                 std::cout << "BOOOM!!!\n";
                 
-                //Names to pick
-                std::array<std::string, 100> names = {
-                    "Thalia Henderson", "Beau Deleon", "Gabrielle Jenkins", "Declan Pham", "Raelyn Stafford",
-                    "Alfredo Gillespie", "Alianna Wyatt", "Sam Banks", "Cali Reynolds", "Vincent Knapp",
-                    "Linda Young", "Asher Bradford", "Rhea Zhang", "Isaias O’Connell", "Jillian Lucas",
-                    "Chance Hart", "Gemma Clay", "Yosef Waters", "Bristol Perry", "Waylon Howe",
-                    "Persephone Casey", "Armando Adkins", "Emelia McLean", "Zhouzen Li", "Violeta Spears",
-                    "Ameer Whitehead", "Sylvie Butler", "Ryder Pace", "Giana Baldwin", "Jaiden Macias",
-                    "Adley Golden", "Patrick Floirendo", "Penny Rollins", "Wes Price", "Piper Reed",
-                    "Easton Acevedo", "Ashlynn Wiley", "Mathew Zimmerman", "Ariyah Andrade", "Abdiel Frederick",
-                    "Sariyah Allen", "Carter Strickland", "Nia Evans", "Elias Stout", "Chana Boyer",
-                    "Zeke Copeland", "Dayana Pittman", "Valentino Lloyd", "Emely Ortega", "Kobe Clarke",
-                    "Kaitlyn Enriquez", "Elisha Johns", "Giovanna Shepard", "Damari Atkins", "Mina Wang",
-                    "Adrian FernandezLopez", "Leona Hunter", "Archer Hester", "Zendaya Hull", "Salem Roberson",
-                    "Sasha Kim", "Roman Newman", "Oaklynn Phelps", "Hamza Ruiz", "Emery Miranda",
-                    "Rory Lester", "Averi Sheppard", "Trent Grimes", "Braelyn Garrison", "Noe Wall",
-                    "Jayda Boyer", "Zeke Donovan", "Azariah Price", "Brooks Pham", "Raelyn Lee",
-                    "Jack Walsh", "Leia Rogers", "Colton Klein", "Elianna Garza", "Judah Delgado",
-                    "Alani Moran", "Tate Douglas", "Aniyah Johnston", "Felix Wolf", "Jolene Kirby",
-                    "Tony Boyle", "Aliya McKay", "Joey Sparks", "Aisha Blair", "Troy Nguyen",
-                    "Esperanza Booth", "Chaim Medina", "Elliana Fields", "Clayton Ware", "Eileen Stevens",
-                    "Zachary Sims", "Lena James", "Jaxson Dougherty", "Alisson Sharp", "Hadrian Lazic"
-                };
                 
                 std::random_device rd; 
                 std::mt19937 gen(rd());
             
                 std::shuffle(names.begin(), names.end(), gen);
                 
-                std::cout << "These people have tragically been taken out in the blast: \n";
-                for(int i {0}; i < 5; i++){
-                    std::cout << "- " << names[i] << "\n";
+                int participants = std::min((int)names.size(), 5);
+            
+                if(participants > 0){    
+                    
+                    std::cout << "These people have tragically been taken out in the blast: \n";
+                    for(int i {0}; i < participants; i++){
+                        
+                        std::cout << "- " << names.back() << "\n";
+                        names.pop_back(); //Permanently remove participants
+                    }
+                }
+                else{
+                    
+                    std::cout << "Everybody is gone...\n\n";
+                    
                 }
                 
             }
             else{
+                
                 std::cout << "Nothing interesting happened.\n\n";
             }
             
         }
         else if(option == 'N' || option == 'n'){
+            
             break;
         }
 
-    
     }
-    
 
 }
-
